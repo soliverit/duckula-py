@@ -29,14 +29,14 @@ scores		= estimator.test()	# -> {"rmse": <float>, "mae": <float>, "r2": <float>}
 ## See: https://xgboost.readthedocs.io/en/stable/parameter.html
 estimator.booster		# string Boosting algorithm
 estimator.maxDepth 		# int Max branches
-estimator.learningRate	# float learning rate: solution space step size or something to that effect 
+estimator.learningRate		# float learning rate: solution space step size or something to that effect 
 estimator.objective		# string determines regression or classification and score metric. E.g. "reg:sqaurederror"
-estimator.sampleType	# string sampling method. xgboost constructor property. E.g uniform
-estimator.normaliseType	# string normalisation method. xgboost constructor property
+estimator.sampleType		# string sampling method. xgboost constructor property. E.g uniform
+estimator.normaliseType		# string normalisation method. xgboost constructor property
 estimator.rateDrop		# float 0 < x < 1 probability that a learner are dropped during an iteration. xgboost constructor property
 estimator.skipDrop		# float 0 < x < 1 probability rate drop will be ignored
 estimator.nRounds		# int No. of rounds. Basically No. estimators from Random forest or GBDT
-estimator.gamma		# float min loss reduction required before further paritioning a leaf 
+estimator.gamma			# float min loss reduction required before further paritioning a leaf 
 ```
 ### Custom estimator (sklearn.SVR example)
 ```Python
