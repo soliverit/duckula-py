@@ -56,6 +56,8 @@ class MealPyOptimiserBase():
 		return problem
 	##
 	# Score / fitness function (Abstract)
+	#
+	# solution:	Array from MealPy. Defines parameter values
 	##
 	def score(self, solution):
 		raise Exception("%s doesn't override score()" %(__class__.__name__))
@@ -81,7 +83,7 @@ class MealPyOptimiserBase():
 		__class__.MapConstructors()
 		if not models:
 			models	= list(__class__.CONSTRCUTORS)
-		results		= []
+		results		= {}
 		best		= 99999999999
 		bestModel	= False
 		for model in models:
@@ -101,7 +103,8 @@ class MealPyOptimiserBase():
 					bestModel	= model
 				else:
 					print("%s: %s" %(model, result))
-			except:
+			except Exception as e:
+				print(e)
 				print("%s: No solution " %(model))
 		return bestModel
 	################################################
