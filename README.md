@@ -51,22 +51,22 @@ class Estimator(EstimatorBase):
 	# data:		DataFrame here. Can be anything with a little class customisation
 	# target:	string name of a column in the training data
 	##
-	def __init__(optimiser, data, target):
+	def __init__(self, data, target):
 		super().__init__(data, target)
-		optimiser.C			= 1 	# float regularization parameter. Trade-off between accuracy and model complexity
-		optimiser.epsilon	= 0.05	# float tolerance of error before penalising
+		self.C			= 1 	# float regularization parameter. Trade-off between accuracy and model complexity
+		self.epsilon	= 0.05	# float tolerance of error before penalising
 	##
 	# Define the object parameters dictionary passed to the SVR constructor with the **optimiser.allParams dict to parameter thing
 	##
 	@property
-	def params(optimiser):
-		return {"C": optimiser.C, "epsilon": optimiser.epsilon}
+	def params(self):
+		return {"C": self.C, "epsilon": self.epsilon}
 	##
 	# Make an SVR for optimiser.model and train it using optimiser.trainingInputs and optimiser.trainingTargets
 	##
-	def train(optimiser):
-		optimiser.model	= SVR(**optimiser.allParams)
-		optimiser.model.fit(optimiser.trainingInputs, optimiser.trainingTargets)
+	def train(self):
+		self.model	= SVR(**self.allParams)
+		self.model.fit(self.trainingInputs, self.trainingTargets)
 ### Create an instance ###
 # Load a DataFrame and create an instance
 estimator	= Estimator.QuickLoad("../depc_nsga2/data/estimator_depc_example.csv", "CURRENT_ENERGY_EFFICIENCY")
