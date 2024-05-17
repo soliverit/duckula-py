@@ -10,6 +10,52 @@ A library for data scientists with no data science or programming experience. Ea
 ## Prerequisites
 - Get Python `3.x` - Developed with `3.11.4`
 - Install necessary packages `pip install -r requirements.txt`
+## Solving optimisation problems
+Overview video [here](https://www.youtube.com/watch?v=Dzri5ZaPAIk): 
+### Using a manually selected MealPy algorithm
+````Python
+# Import MealPy metaheuristics library wrapper
+from lib.mealpy_optimiser_base	import MealPyOptimiserBase
+# Load MealPy algorithm dict
+MealPyOptimiserBase.MapConstructors()
+###
+# Let's solve the Rosenbrock problem: f(x, y) = (x - a) ^ 2 + b(y - x ^ 2) ^ 2
+###
+class Optimiser(MealPyOptimiserBase):
+	## We need to define the boundaries with @property methods for variably bounds
+	@property
+	def lowerBounds(self):
+		return [-5, -5]
+	@property
+	def upperBounds(self):
+		return [5, 5]
+	## We need to define a fitness function
+	def score(self, solution):
+		a, b	= 1, 100
+		x, y	= solution[0], solution[1]
+		return (x - a) ** 2 + b * (y - x**2) ** 2
+# Create instance with manually chosen MealPy algorithm. All stored in wrapper's CONSTRUCTORs dict
+optimiser		= Optimiser(
+	algorithm=MealPyOptimiserBase.CONSTRCUTORS["OriginalBBOA"], # Keys in the CONSTURCTORS are algorithm ames
+	varType=MealPyOptimiserBase.FLOAT_VAR						# It's a continuous problem. 
+)
+result	= optimiser.solve()
+print(optimiser.lastResult.target.fitness)
+###########################
+# Configurable properties #
+###########################
+optimiser.epochs		# int number of epochs
+optimiser.minMax		# string [min]imise or [max]imise
+optimiser.varType		# MealPy variable type. Typically IntegerVar or FloatVar
+optimiser.inequality		# float threshold for classifying the solution as optimal
+optimiser.population		# int population size
+optimiser.customParams		# Dict of extra problem parameters. E.g obj_weights for multi-objective
+optimiser.algorithm		# The MealPy "magic" alogrithm of your choice
+````
+### Letting the Optimiser select the best MealPy algorithm
+````Python
+bestAlgorithm	= optimiser.barrage()  # Grab a coffe and let Duckula figure it out.
+````
 
 ## Supervised learning
 Overview video [here](https://www.youtube.com/watch?v=Zr72YpbQ7BA): 
@@ -113,53 +159,6 @@ tuner.trials		# Hyperopt Trials result tracking object
 tuner.optimiser		# Hyperopt fmin or similar
 tuner.cvSteps		# int number of cross-validation steps
 ```
-## Solving optimisation problems
-Overview video [here](https://www.youtube.com/watch?v=Dzri5ZaPAIk): 
-### Using a manually selected MealPy algorithm
-````Python
-# Import MealPy metaheuristics library wrapper
-from lib.mealpy_optimiser_base	import MealPyOptimiserBase
-# Load MealPy algorithm dict
-MealPyOptimiserBase.MapConstructors()
-###
-# Let's solve the Rosenbrock problem: f(x, y) = (x - a) ^ 2 + b(y - x ^ 2) ^ 2
-###
-class Optimiser(MealPyOptimiserBase):
-	## We need to define the boundaries with @property methods for variably bounds
-	@property
-	def lowerBounds(self):
-		return [-5, -5]
-	@property
-	def upperBounds(self):
-		return [5, 5]
-	## We need to define a fitness function
-	def score(self, solution):
-		a, b	= 1, 100
-		x, y	= solution[0], solution[1]
-		return (x - a) ** 2 + b * (y - x**2) ** 2
-# Create instance with manually chosen MealPy algorithm. All stored in wrapper's CONSTRUCTORs dict
-optimiser		= Optimiser(
-	algorithm=MealPyOptimiserBase.CONSTRCUTORS["OriginalBBOA"], # Keys in the CONSTURCTORS are algorithm ames
-	varType=MealPyOptimiserBase.FLOAT_VAR						# It's a continuous problem. 
-)
-result	= optimiser.solve()
-print(optimiser.lastResult.target.fitness)
-###########################
-# Configurable properties #
-###########################
-optimiser.epochs		# int number of epochs
-optimiser.minMax		# string [min]imise or [max]imise
-optimiser.varType		# MealPy variable type. Typically IntegerVar or FloatVar
-optimiser.inequality		# float threshold for classifying the solution as optimal
-optimiser.population		# int population size
-optimiser.customParams		# Dict of extra problem parameters. E.g obj_weights for multi-objective
-optimiser.algorithm		# The MealPy "magic" alogrithm of your choice
-````
-### Letting the Optimiser select the best MealPy algorithm
-````Python
-bestAlgorithm	= optimiser.barrage()  # Grab a coffe and let Duckula figure it out.
-````
-
 ## Credits:
 - MealPy for optimisation algorithms: https://github.com/thieu1995/mealpy
 - Hyperopt for parameter tuning: https://github.com/hyperopt/hyperopt
