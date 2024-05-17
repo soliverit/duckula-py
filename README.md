@@ -18,7 +18,7 @@ Overview video [here](https://www.youtube.com/watch?v=Zr72YpbQ7BA):
 # Import pre-built XGBoost estimator
 from lib.estimators	import XGBoostEstimator
 # Load data and create the estimator. Any numeric-only dataset with column headers will do
-estimator	= XGBoostEstimator.QuickLoad(PATH_TO_NUMERIC_DATA_CSV, TARGET_COLUMN_NAME)
+estimator	= XGBoostEstimator.QuickLoad(PATH_TO_ANY_NUMERIC_DATA_CSV, TARGET_COLUMN_NAME)
 # Train with default settings
 estimator.train()
 # Test the estimator's performance
@@ -71,7 +71,7 @@ class Estimator(EstimatorBase):
 		self.model.fit(self.trainingInputs, self.trainingTargets)
 ### Create an instance ###
 # Load a DataFrame and create an instance
-estimator	= Estimator.QuickLoad("../depc_nsga2/data/estimator_depc_example.csv", "CURRENT_ENERGY_EFFICIENCY")
+estimator	= XGBoostEstimator.QuickLoad(PATH_TO_ANY_NUMERIC_DATA_CSV, TARGET_COLUMN_NAME)
 # It's SVR so let's enable normalisers and scalers
 estimator.applyNormaliser	= True
 estimator.applyScaler		= True
