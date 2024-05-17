@@ -17,25 +17,25 @@ Overview video [here](https://www.youtube.com/watch?v=Zr72YpbQ7BA):
 # Import pre-built XGBoost estimator
 from lib.estimators	import XGBoostEstimator
 # Load data and create the estimator. Any numeric-only dataset with column headers will do
-model	= XGBoostEstimator.QuickLoad(PATH_TO_NUMERIC_DATA_CSV, TARGET_COLUMN_NAME)
+estimator	= XGBoostEstimator.QuickLoad(PATH_TO_NUMERIC_DATA_CSV, TARGET_COLUMN_NAME)
 # Train with default settings
-model.train()
+estimator.train()
 # Test the estimator's performance
-scores	= model.test()	# -> {rmse: <float>, mae: <float>, r2: <float>}
+scores		= estimator.test()	# -> {"rmse": <float>, "mae": <float>, "r2": <float>}
 ###########################
 # Configurable properties #
 ###########################
 ## See: https://xgboost.readthedocs.io/en/stable/parameter.html
-model.booster		# string Boosting algorithm
-model.maxDepth 		# int Max branches
-model.learningRate	# float learning rate: solution space step size or something to that effect 
-model.objective		# string determines regression or classification and score metric. E.g. "reg:sqaurederror"
-model.sampleType	# string sampling method. xgboost constructor property. E.g uniform
-model.normaliseType	# string normalisation method. xgboost constructor property
-model.rateDrop		# float 0 < x < 1 probability that a learner are dropped during an iteration. xgboost constructor property
-model.skipDrop		# float 0 < x < 1 probability rate drop will be ignored
-model.nRounds		# int No. of rounds. Basically No. estimators from Random forest or GBDT
-model.gamma		# float min loss reduction required before further paritioning a leaf 
+estimator.booster		# string Boosting algorithm
+estimator.maxDepth 		# int Max branches
+estimator.learningRate	# float learning rate: solution space step size or something to that effect 
+estimator.objective		# string determines regression or classification and score metric. E.g. "reg:sqaurederror"
+estimator.sampleType	# string sampling method. xgboost constructor property. E.g uniform
+estimator.normaliseType	# string normalisation method. xgboost constructor property
+estimator.rateDrop		# float 0 < x < 1 probability that a learner are dropped during an iteration. xgboost constructor property
+estimator.skipDrop		# float 0 < x < 1 probability rate drop will be ignored
+estimator.nRounds		# int No. of rounds. Basically No. estimators from Random forest or GBDT
+estimator.gamma		# float min loss reduction required before further paritioning a leaf 
 ```
 ### Custom estimator (sklearn.SVR example)
 ```Python
