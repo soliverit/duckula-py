@@ -1,9 +1,10 @@
-# Duckula - Data science tools for dabblers
+# Duckula DS - Data science tools for dabblers
 A library for data scientists with no data science or programming experience. Easily create supervised machine learning models, solve optimisation problems, and tune the hyperparameters. 
 
 - Supervised machine learning model creation and tuning
 - Optimisation with 193 optimisation algorithms implemented by MealPy
 - Hyperparameter tuning with Hyperopt
+- KMeans clustering
 
 # Getting started
 ## Prerequisites
