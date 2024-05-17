@@ -35,11 +35,11 @@ class Optimiser(MealPyOptimiserBase):
 		x, y	= solution[0], solution[1]
 		return (x - a) ** 2 + b * (y - x**2) ** 2
 # Create instance with manually chosen MealPy algorithm. All stored in wrapper's CONSTRUCTORs dict
-optimiser		= Optimiser(
+optimiser	= Optimiser(
 	algorithm=MealPyOptimiserBase.CONSTRCUTORS["OriginalBBOA"], # Keys in the CONSTURCTORS are algorithm ames
 	varType=MealPyOptimiserBase.FLOAT_VAR						# It's a continuous problem. 
 )
-result	= optimiser.solve()
+result		= optimiser.solve()
 print(optimiser.lastResult.target.fitness)
 ###########################
 # Configurable properties #
