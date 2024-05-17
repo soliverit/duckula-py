@@ -6,11 +6,12 @@ A library for data scientists with no data science or programming experience. Ea
 - Hyperparameter tuning with Hyperopt
 
 # Getting started
-### Prerequisites
+## Prerequisites
 - Get Python `3.x` - Developed with `3.11.4`
 - Install necessary packages `pip install -r requirements.txt`
 
 ## Supervised learning
+Overview video [here](https://www.youtube.com/watch?v=Zr72YpbQ7BA): 
 ### Using pre-made estimators 
 ```Python
 # Import pre-built XGBoost estimator
@@ -112,6 +113,7 @@ tuner.optimiser		# Hyperopt fmin or similar
 tuner.cvSteps		# int number of cross-validation steps
 ```
 ## Solving optimisation problems
+Overview video [here](https://www.youtube.com/watch?v=Dzri5ZaPAIk): 
 ### Using a manually selected MealPy algorithm
 ````Python
 # Import MealPy metaheuristics library wrapper
@@ -145,15 +147,18 @@ print(optimiser.lastResult.target.fitness)
 # Configurable properties #
 ###########################
 optimiser.epochs		# int number of epochs
-
 optimiser.minMax		# string [min]imise or [max]imise
 optimiser.varType		# MealPy variable type. Typically IntegerVar or FloatVar
-optimiser.inequality	# float threshold for classifying the solution as optimal
-optimiser.population	# int population size
-optimiser.customParams	# Dict of extra problem parameters. E.g obj_weights for multi-objective
+optimiser.inequality		# float threshold for classifying the solution as optimal
+optimiser.population		# int population size
+optimiser.customParams		# Dict of extra problem parameters. E.g obj_weights for multi-objective
 optimiser.algorithm		# The MealPy "magic" alogrithm of your choice
-```
+````
 ### Letting the Optimiser select the best MealPy algorithm
 ````Python
-bestAlgorithm	= optimiser.barrage()  # Grab a coffe and let Duckula work its magic
+bestAlgorithm	= optimiser.barrage()  # Grab a coffe and let Duckula figure it out.
 ````
+
+## Credits:
+- MealPy for optimisation algorithms: https://github.com/thieu1995/mealpy
+- Hyperopt for parameter tuning: https://github.com/hyperopt/hyperopt
