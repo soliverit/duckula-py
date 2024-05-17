@@ -1,0 +1,7 @@
+pymoo
+bayesian-optimization
+hyperopt
+pandas
+scikit-learn
+xgboost
+colorama
