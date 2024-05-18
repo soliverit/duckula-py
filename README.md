@@ -124,7 +124,7 @@ estimator.applyScaler		= True
 # Train the model
 estimator.train()
 ```
-### Hyperparameter tuning (SVREstimator example)
+# Hyperparameter tuning (SVREstimator example)
 ```Python
 ### Includes ###
 ## Project
