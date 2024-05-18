@@ -117,7 +117,7 @@ class Estimator(EstimatorBase):
 		self.model.fit(self.trainingInputs, self.trainingTargets)
 ### Create an instance ###
 # Load a DataFrame and create an instance
-estimator	= XGBoostEstimator.QuickLoad(PATH_TO_ANY_NUMERIC_DATA_CSV, TARGET_COLUMN_NAME)
+estimator	= Estimator.QuickLoad(PATH_TO_ANY_NUMERIC_DATA_CSV, TARGET_COLUMN_NAME)
 # It's SVR so let's enable normalisers and scalers
 estimator.applyNormaliser	= True
 estimator.applyScaler		= True
