@@ -14,10 +14,10 @@ A library for data scientists with little data science or programming experience
 Overview video [here](https://www.youtube.com/watch?v=Dzri5ZaPAIk): 
 ### Using a manually selected MealPy algorithm
 ````Python
-# Import MealPy metaheuristics library wrapper
+# Import MealPy metaheuristics library and map MealPy constructors to MealPyOptimiserBase.CONSTRUCTORS dictionary
 from lib.mealpy_optimiser_base	import MealPyOptimiserBase
-# Load MealPy algorithm dict
 MealPyOptimiserBase.MapConstructors()
+
 ###
 # Let's solve the Rosenbrock problem: f(x, y) = (x - a) ^ 2 + b(y - x ^ 2) ^ 2
 ###
@@ -34,13 +34,15 @@ class Optimiser(MealPyOptimiserBase):
 		a, b	= 1, 100
 		x, y	= solution[0], solution[1]
 		return (x - a) ** 2 + b * (y - x**2) ** 2
+
 # Create instance with manually chosen MealPy algorithm. All stored in wrapper's CONSTRUCTORs dict
 optimiser	= Optimiser(
 	algorithm=MealPyOptimiserBase.CONSTRCUTORS["OriginalBBOA"], 	# Keys in the CONSTURCTORS are algorithm ames
 	varType=MealPyOptimiserBase.FLOAT_VAR				# It's a continuous problem. 
 )
 result		= optimiser.solve()		
-print(optimiser.lastResult.target.fitness)	# lastResult is the MealPy result struct	
+print(optimiser.lastResult.target.fitness)	# lastResult is the MealPy result struct
+
 ###########################
 # Configurable properties #
 ###########################
@@ -63,12 +65,16 @@ Overview video [here](https://www.youtube.com/watch?v=Zr72YpbQ7BA):
 ```Python
 # Import pre-built XGBoost estimator
 from lib.estimators	import XGBoostEstimator
+
 # Load data and create the estimator. Any numeric-only dataset with column headers will do
 estimator	= XGBoostEstimator.QuickLoad(PATH_TO_ANY_NUMERIC_DATA_CSV, TARGET_COLUMN_NAME)
+
 # Train with default settings
 estimator.train()
+
 # Test the estimator's performance
 scores		= estimator.test()	# -> {"rmse": <float>, "mae": <float>, "r2": <float>}
+
 ###########################
 # Configurable properties #
 ###########################
@@ -93,6 +99,7 @@ from pandas						import read_csv
 ## Project
 from lib.estimator_base			import EstimatorBase
 from lib.hyperopt_hp_tuner_base	import HyperoptHpTunerBase
+
 ### Define the estimator  ###
 class Estimator(EstimatorBase):
 	##
@@ -115,12 +122,14 @@ class Estimator(EstimatorBase):
 	def train(self):
 		self.model	= SVR(**self.allParams)
 		self.model.fit(self.trainingInputs, self.trainingTargets)
+
 ### Create an instance ###
 # Load a DataFrame and create an instance
 estimator	= Estimator.QuickLoad(PATH_TO_ANY_NUMERIC_DATA_CSV, TARGET_COLUMN_NAME)
 # It's SVR so let's enable normalisers and scalers
 estimator.applyNormaliser	= True
 estimator.applyScaler		= True
+
 # Train the model
 estimator.train()
 ```
@@ -129,7 +138,8 @@ estimator.train()
 ### Includes ###
 ## Project
 from lib.hyperopt_hp_tuner_base	import HyperoptHpTunerBase
-# Create the estimator object
+
+# Define the estimator
 class Tuner(HyperoptHpTunerBase):
 	##
 	# We only need to define the evaluation function that defines the model's fitness.
@@ -137,18 +147,22 @@ class Tuner(HyperoptHpTunerBase):
 	def evaluate(self):
 		self.model.train()
 		return self.model.test()["rmse"]
+
 # Create a tuner instance
 tuner	= Tuner(estimator)
+
 ## Add some tunable parameters
 tuner.addUniformIntParameter("C", 1, 60)
 tuner.addUniformParameter("epsilon", 0.001, 0.03)
 # Tune the SVREstimator
 tuner.tune()
+
 ### Apply best parameters##
 estimator.C		= tuner.best["C"]
 estimator.epsilon	= tuner.best["epsilon"]
 # Retrain the estimator
 estimator.train()
+
 ###########################
 # Configurable properties #
 ###########################
