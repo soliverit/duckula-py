@@ -54,7 +54,7 @@ optimiser.algorithm		# The MealPy "magic" alogrithm of your choice
 ````
 ### Letting the Optimiser select the best MealPy algorithm
 ````Python
-bestAlgorithm	= optimiser.barrage()  # Grab a coffe and let Duckula figure it out.
+bestAlgorithm	= optimiser.barrage()  # Grab a coffee and let Duckula figure it out.
 ````
 
 ## Supervised learning
