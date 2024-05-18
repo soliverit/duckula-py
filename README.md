@@ -68,10 +68,8 @@ from lib.estimators	import XGBoostEstimator
 
 # Load data and create the estimator. Any numeric-only dataset with column headers will do
 estimator	= XGBoostEstimator.QuickLoad(PATH_TO_ANY_NUMERIC_DATA_CSV, TARGET_COLUMN_NAME)
-
 # Train with default settings
 estimator.train()
-
 # Test the estimator's performance
 scores		= estimator.test()	# -> {"rmse": <float>, "mae": <float>, "r2": <float>}
 
