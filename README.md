@@ -1,4 +1,4 @@
-# Duckula DS - Data science tools for dabblers
+# Duckula - Data science tools for dabblers
 A library for data scientists with little data science or programming experience. Easily create supervised machine learning models, solve optimisation problems, and tune the hyperparameters. 
 
 - Supervised machine learning model creation and tuning
