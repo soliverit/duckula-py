@@ -39,8 +39,8 @@ optimiser	= Optimiser(
 	algorithm=MealPyOptimiserBase.CONSTRCUTORS["OriginalBBOA"], 	# Keys in the CONSTURCTORS are algorithm ames
 	varType=MealPyOptimiserBase.FLOAT_VAR				# It's a continuous problem. 
 )
-result		= optimiser.solve()
-print(optimiser.lastResult.target.fitness)
+result		= optimiser.solve()		
+print(optimiser.lastResult.target.fitness)	# lastResult is the MealPy result struct	
 ###########################
 # Configurable properties #
 ###########################
