@@ -22,7 +22,7 @@ MealPyOptimiserBase.MapConstructors()
 # Let's solve the Rosenbrock problem: f(x, y) = (x - a) ^ 2 + b(y - x ^ 2) ^ 2
 ###
 class Optimiser(MealPyOptimiserBase):
-	## We need to define the boundaries with @property methods for variably bounds
+	## We need to define the boundaries with @property methods for variable bounds
 	@property
 	def lowerBounds(self):
 		return [-5, -5]
