@@ -49,7 +49,7 @@ print(optimiser.lastResult.target.fitness)	# lastResult is the MealPy result str
 optimiser.epochs		# int number of epochs
 optimiser.minMax		# string [min]imise or [max]imise
 optimiser.varType		# MealPy variable type. Typically IntegerVar or FloatVar
-optimiser.inequality		# float threshold for classifying the solution as optimal
+optimiser.inequality		# float - (gamma) - threshold for classifying the solution as optimal
 optimiser.population		# int population size
 optimiser.customParams		# Dict of extra problem parameters. E.g obj_weights for multi-objective
 optimiser.algorithm		# The MealPy "magic" alogrithm of your choice
