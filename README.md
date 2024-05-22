@@ -140,7 +140,7 @@ from lib.hyperopt_hp_tuner_base	import HyperoptHpTunerBase
 # Define the estimator
 class Tuner(HyperoptHpTunerBase):
 	##
-	# We only need to define the evaluation function that defines the model's fitness.
+	# We only need to define the evaluate function that determines the model's fitness.
 	##
 	def evaluate(self):
 		self.model.train()
