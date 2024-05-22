@@ -37,7 +37,7 @@ class Optimiser(MealPyOptimiserBase):
 
 # Create instance with manually chosen MealPy algorithm. All stored in wrapper's CONSTRUCTORs dict
 optimiser	= Optimiser(
-	algorithm=MealPyOptimiserBase.CONSTRCUTORS["OriginalBBOA"], 	# Keys in the CONSTURCTORS are algorithm ames
+	algorithm=MealPyOptimiserBase.CONSTRCUTORS["OriginalBBOA"], 	# Keys in the CONSTURCTORS are algorithm names
 	varType=MealPyOptimiserBase.FLOAT_VAR				# It's a continuous problem. 
 )
 result		= optimiser.solve()		
