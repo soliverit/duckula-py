@@ -3,7 +3,7 @@
 A library for data scientists with little data science or programming experience. Easily create supervised machine learning models, solve optimisation problems, and tune the hyperparameters. 
 
 <table style='border:none;'>
-<tr><td rowspan=4><img src="https://github.com/user-attachments/assets/72bca2ca-352c-4516-b5dd-b4cd3b45f67f" height="250" /></td><td>- Supervised machine learning model training and tuning </td></tr>
+<tr><td rowspan=4><img src="https://github.com/user-attachments/assets/72bca2ca-352c-4516-b5dd-b4cd3b45f67f" height="250" /></td><td>- Supervised machine learning </td></tr>
 <tr><td>- Optimisation with 193 algorithms implemented by MealPy </td></tr>
 <tr><td>- Hyperparameter tuning with Hyperopt </td></tr>
 <tr><td>- KMeans clustering</td></tr>
