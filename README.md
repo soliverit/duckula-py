@@ -9,11 +9,6 @@ A library for data scientists with little data science or programming experience
 <tr><td>- KMeans clustering</td></tr>
 </table>
 
-- Supervised machine learning model training and tuning
-- Optimisation with 193 algorithms implemented by MealPy
-- Hyperparameter tuning with Hyperopt
-- KMeans clustering
-
 # Getting started
 ## Prerequisites
 - Get Python `3.x` - Developed with `3.11.4`
